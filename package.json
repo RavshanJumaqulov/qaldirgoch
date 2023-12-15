@@ -1,0 +1,45 @@
+{
+  "name": "my_test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  },
+  "dependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.15",
+    "@mui/lab": "^5.0.0-alpha.150",
+    "@mui/material": "^5.14.15",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.3",
+    "@react-input/mask": "^1.0.20",
+    "axios": "^1.6.0",
+    "cookie": "^0.6.0",
+    "next": "13.5.6",
+    "next-auth": "^4.24.4",
+    "nextjs-toploader": "^1.6.4",
+    "nookies": "^2.5.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.47.0",
+    "react-query": "^3.39.3",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.0",
+    "swiper": "^11.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.11",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.6",
+    "typescript": "^5"
+  }
+}
