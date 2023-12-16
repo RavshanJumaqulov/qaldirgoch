@@ -4,10 +4,10 @@ import { Box, Button, Container, Typography } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-export default function TestError({ error }: { error: string }) {
+export default function TestsError({ error }: { error: string }) {
     const router = useRouter()
     return (
-        <Container maxWidth="xl" sx={{ ml: 0, position: 'relative', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 80px)' }}>
+        <Container maxWidth="xl" sx={{ mb: 1, ml: 0, position: 'relative', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 80px)' }}>
             <Box
                 sx={{
                     width: "90%",

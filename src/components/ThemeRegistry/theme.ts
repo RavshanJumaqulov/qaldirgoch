@@ -1,19 +1,8 @@
-import { Open_Sans, Roboto, Ubuntu } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
 
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 const openSans = Open_Sans({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const ubuntu = Ubuntu({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
@@ -30,7 +19,7 @@ const theme = (mode: PaletteMode) => createTheme({
     }
   },
   typography: {
-    fontFamily: ubuntu.style.fontFamily,
+    fontFamily: openSans.style.fontFamily,
     subtitle1: {
       fontFamily: openSans.style.fontFamily,
       fontSize: 40,

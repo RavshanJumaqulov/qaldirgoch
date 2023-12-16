@@ -13,15 +13,17 @@ export default function layout({ children }: { children: React.ReactNode }) {
       sx={{
         width: "100%",
         height: "100vh",
+        overflow: 'hidden',
       }}
     >
       <AppBar />
       <Stack
         direction={"row"}
         sx={{
-          width: { xs: "100%", sm: "calc(100% - 80px)" },
+          width: { xs: '100%', sm: "calc(100% - 80px)" },
           ml: { sm: 10 },
-          px: { xs: 1, sm: 2 },
+
+          px: 1,
           py: { sx: 1, sm: 2 },
           textAlign: "left",
           position: "relative",
@@ -40,7 +42,11 @@ export default function layout({ children }: { children: React.ReactNode }) {
             zIndex: -1
           }}
         ></Box>
-        {children}
+        <Box sx={{ width: '100%', minHeight: "100vh", }}>
+          <Box sx={{ width: '100%', mt: 10, }}>
+            {children}
+          </Box>
+        </Box>
       </Stack>
     </Box>
   );

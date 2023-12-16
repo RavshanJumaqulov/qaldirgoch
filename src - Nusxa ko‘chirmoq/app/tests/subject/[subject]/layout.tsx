@@ -1,6 +1,0 @@
-import { Box } from "@mui/material";
-import React from "react";
-
-export default function layout({ children }: { children: React.ReactNode }) {
-  return <Box sx={{ width: "100%" }}>{children}</Box>;
-}

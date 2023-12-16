@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import Tests from "./Tests";
 import { api } from "@/app/api/lib/api";
-import { ErrorInterface, TestsInterface } from "../../../../types/TypeInterfaces";
+import { TestsInterface } from "../../../../types/TypeInterfaces";
 import { redirect } from "next/navigation";
 import TestError from "./TestError";
 

@@ -1,9 +1,18 @@
+'use client'
 import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
 import { HeadsInterface, MyResults } from '../../../types/TypeInterfaces'
 import Link from 'next/link'
 
-export default function ResultItem({ index, heads, result }: { index: number, heads: HeadsInterface[], result: MyResults }) {
+export default function ResultItem({
+    index,
+    heads,
+    result
+}: {
+    index: number,
+    heads: HeadsInterface[],
+    result: MyResults
+}) {
 
     return (
         <Box sx={{
@@ -61,7 +70,7 @@ export default function ResultItem({ index, heads, result }: { index: number, he
                         Davom ettirish
                     </Button>
                     :
-                    <Button component={Link} href={`test/${result.slug}/`} sx={{ px: 1, background: 'hsla(0, 0%, 100%, 0.1)', fontWeight: 400, fontSize: 16, borderRadius: 3 }}>
+                    <Button component={Link} href={`test/${result.slug}`} sx={{ px: 1, background: 'hsla(0, 0%, 100%, 0.1)', fontWeight: 400, fontSize: 16, borderRadius: 3 }}>
                         Davom ettirish
                     </Button>}
             </Box>

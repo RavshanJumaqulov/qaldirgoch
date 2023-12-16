@@ -57,7 +57,7 @@ export default function SubjectsSlider({
         },
       }}
     >
-      <Box
+      {/* <Box
         sx={{
           width: 30,
           height: "100%",
@@ -67,7 +67,7 @@ export default function SubjectsSlider({
           boxShadow: "-10px 0px 10px #00000 inset",
           background: "linear-gradient(90deg, rgba(0,0,0,0) 0%, #121212 100%)",
         }}
-      />
+      /> */}
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={20}

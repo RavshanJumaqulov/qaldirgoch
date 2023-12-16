@@ -35,9 +35,9 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  openGraph: {
-    images: "/swallow.png",
-  },
+  // openGraph: {
+  //   images: "/swallow.png",
+  // },
   images: [
     {
       url: "/swallow.png",

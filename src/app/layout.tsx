@@ -15,6 +15,7 @@ export default async function RootLayout({
       <body>
         <Box sx={{
           width: "100%",
+          maxWidth: '100vw',
           position: "fixed",
           zIndex: 999999999,
           '&::-webkit-scrollbar': {
@@ -36,7 +37,7 @@ export default async function RootLayout({
           <NextTopLoader />
         </Box>
         <ThemeRegistry>
-          <Box sx={{ minWidth: "100vw", }}>{children}</Box>
+          <Box sx={{ minWidth: "100vw", maxWidth: '100vw', overflow: 'hidden', }}>{children}</Box>
         </ThemeRegistry>
       </body>
     </html>

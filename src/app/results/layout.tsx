@@ -3,41 +3,8 @@ import { Box, Stack } from "@mui/material";
 import React from "react";
 
 export const metadata = {
-    title: "Natijalarim | Qizil qaldirg'och",
+    title: "Testlar | QIZIL QALDIRG'OCH",
     description: "Abiturientlar uchun test sinovlari",
-    generator: "Next.js",
-    applicationName: "Qizil qaldirg'och",
-    referrer: "origin-when-cross-origin",
-    keywords: ["Abiturient", "Testlar", "DTM", "dtm", "test sinovlari"],
-    authors: [
-        { name: "Ravshan Jumaqulov" },
-        { name: "Ravshan Jumaqulov", url: "https://t.me/ravshan_jumaqulov" },
-    ],
-    creator: "Ravshan Jumaqulov",
-    publisher: "Ravshan Jumaqulov",
-    url: "https://swallow.net",
-    formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-    },
-    openGraph: {
-        images: "/swallow.png",
-    },
-    images: [
-        {
-            url: "/swallow.png",
-            width: 800,
-            height: 600,
-        },
-        {
-            url: "/swallow.png",
-            width: 1800,
-            height: 1600,
-            alt: "My custom alt",
-        },
-    ],
-    type: "website",
 };
 
 export default function layout({ children }: { children: React.ReactNode }) {
@@ -46,15 +13,16 @@ export default function layout({ children }: { children: React.ReactNode }) {
             sx={{
                 width: "100%",
                 height: "100vh",
+                overflow: 'hidden',
             }}
         >
             <AppBar />
             <Stack
                 direction={"row"}
                 sx={{
-                    width: { xs: "100%", sm: "calc(100% - 64px)" },
-                    ml: { sm: 8 },
-                    px: { xs: 1, sm: 2 },
+                    width: { xs: '100%', sm: "calc(100% - 80px)" },
+                    ml: { sm: 10 },
+                    px: 1,
                     py: { sx: 1, sm: 2 },
                     textAlign: "left",
                     position: "relative",
@@ -70,10 +38,14 @@ export default function layout({ children }: { children: React.ReactNode }) {
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "top",
                         position: "fixed",
-                        zIndex: -10
+                        zIndex: -1
                     }}
                 ></Box>
-                {children}
+                <Box sx={{ width: '100%', minHeight: "100vh", }}>
+                    <Box sx={{ width: '100%', mt: 10, }}>
+                        {children}
+                    </Box>
+                </Box>
             </Stack>
         </Box>
     );

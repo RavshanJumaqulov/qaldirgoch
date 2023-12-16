@@ -7,15 +7,11 @@ type Body = {
 }
 export async function POST(req: NextRequest, res: NextResponse) {
     const body: Body = await req.json();
-    console.log(body);
-
     const request = await api({
         url: `/quizzes/${body.slug}/submit/`,
         method: 'post',
         data: { quiztaker: body.quiztaker },
     })
-
-    console.log(request);
 
     if (request.status == 200) {
         return NextResponse.json({
@@ -29,7 +25,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return NextResponse.json({
         success: false,
         status: request.status,
-        message: 'Qandaydur xatolik sodir bo`ldi',
+        message: 'Qandaydir xatolik sodir bo`ldi',
         data: request.data
     })
 }
