@@ -1,10 +1,8 @@
-'use client'
-import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
-import { HeadsInterface, MyResults } from '../../../types/TypeInterfaces'
-import Link from 'next/link'
-
-export default function ResultItem({
+import { Box, Button, Typography } from '@mui/material';
+import React from 'react';
+import { HeadsInterface, MyResults } from '../../../types/TypeInterfaces';
+import Link from 'next/link';
+export default async function ResultItem({
     index,
     heads,
     result

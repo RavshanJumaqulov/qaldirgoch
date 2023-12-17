@@ -141,5 +141,5 @@ export interface MyResults {
   score: number |  null,
   progress: null | number,
   date_finished: string | null,
-  timestamp: string | null
+  timestamp: string | null,
 }

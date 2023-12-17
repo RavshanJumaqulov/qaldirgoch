@@ -1,11 +1,10 @@
 "use client";
 import { Box, CircularProgress } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Link from "next/link";
+import Link from 'next/link';
 import useVisiblity from "@/hooks/useVisiblity";
 import { Subject } from "../../types/TypeInterfaces";
 
@@ -27,7 +26,6 @@ export default function SubjectsSlider({
       sx={{
         width: "100%",
         mb: { xs: 4, md: 6 },
-        mt: 10,
         position: "relative",
         overflow: "hidden",
         "& .swiper": {
@@ -74,7 +72,6 @@ export default function SubjectsSlider({
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>

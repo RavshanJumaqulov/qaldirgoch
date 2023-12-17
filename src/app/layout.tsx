@@ -14,31 +14,33 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <Box sx={{
-          width: "100%",
-          maxWidth: '100vw',
-          position: "fixed",
-          zIndex: 999999999,
-          '&::-webkit-scrollbar': {
+          '& ::-webkit-scrollbar': {
             width: 3,
           },
 
-          '&::-webkit-scrollbar-track': {
+          '& ::-webkit-scrollbar-track': {
             background: 'hsla(0,0%,100%,.1)'
           },
 
-          '&::-webkit-scrollbar-thumb': {
+          '& ::-webkit-scrollbar-thumb': {
             background: '#ff7434'
           },
 
-          '&::-webkit-scrollbar-thumb:hover': {
+          '& ::-webkit-scrollbar-thumb:hover': {
             background: 'red'
           },
         }}>
-          <NextTopLoader />
+          <Box sx={{
+            width: "100%",
+            maxWidth: '100vw',
+            zIndex: 999999999,
+          }}>
+            <NextTopLoader />
+          </Box>
+          <ThemeRegistry>
+            <Box sx={{ minWidth: "100vw", maxWidth: '100vw', overflowX: 'hidden', }}>{children}</Box>
+          </ThemeRegistry>
         </Box>
-        <ThemeRegistry>
-          <Box sx={{ minWidth: "100vw", maxWidth: '100vw', overflow: 'hidden', }}>{children}</Box>
-        </ThemeRegistry>
       </body>
     </html>
   );

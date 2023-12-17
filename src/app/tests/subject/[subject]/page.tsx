@@ -31,7 +31,7 @@ export default async function Subject({
   console.log(themes);
   return (
     <Box sx={{ maxWidth: "100vw", minHeight: "100vh", overflow: "hidden" }}>
-      <Box sx={{ width: "100%", mt: 10 }}>
+      <Box sx={{ width: "100%" }}>
         <Container maxWidth="xl" sx={{ ml: 0 }}>
           <SubjectsSlider subjects={data} params={params.subject} />
           <AllTests themes={themes} />

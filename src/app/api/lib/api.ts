@@ -26,9 +26,7 @@ api.interceptors.response.use(
     (response) => {
         return response;
     },
-    async (error) => {
-        // console.log(error.response);
-        
+    async (error) => {        
         const prevRequest = error.config
         if (error.response.status == 401 && !prevRequest.send) {
             
