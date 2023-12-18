@@ -28,8 +28,6 @@ export default async function page() {
   ];
   const results: MyResults[] = await fetchResults()
 
-  console.log(results);
-
   return (
     <Container maxWidth="xl" sx={{ ml: 0, }}>
       <Typography variant='subtitle2'>
