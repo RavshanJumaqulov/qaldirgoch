@@ -3,16 +3,17 @@ import React from 'react'
 import { HeadsInterface, MyResults } from '../../../types/TypeInterfaces'
 import { api } from '../api/lib/api';
 import ResultItem from './ResultItem';
-import { AxiosResponse } from 'axios';
 
 async function fetchResults() {
-  const request: AxiosResponse<any> = await api({
+  const request = await api({
     method: 'get',
     url: `/my-quizzes/`
   });
-  return request.data;
-  // if (request.status == 200) {
-  // }
+  if (request?.status == 200) {
+    return request.data;
+  }
+
+  return []
 }
 
 export default async function page() {
@@ -26,6 +27,9 @@ export default async function page() {
     { name: "Yo'naltirish", width: 150, key: 'score' },
   ];
   const results: MyResults[] = await fetchResults()
+
+  console.log(results);
+
   return (
     <Container maxWidth="xl" sx={{ ml: 0, }}>
       <Typography variant='subtitle2'>

@@ -3,24 +3,24 @@ import TestItem from "@/components/TestItem";
 import { Box, Button, Container, Typography } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useEffect, useRef, useState } from "react";
-import { AlertInterface, AnswerInterface, TestItemInterface, TestsInterface } from "../../../../types/TypeInterfaces";
+import { AlertInterface, AnswerInterface, ResultDataInterface, TestItemInterface, TestsInterface } from "../../../../types/TypeInterfaces";
 import TestNumber from "./TestNumber";
 import useWidth from "@/hooks/useWidth";
 import CustomAlert from "@/components/CustomAlert";
 import useVisiblity from "@/hooks/useVisiblity";
-import { useRouter } from "next/navigation";
+import ResultModal from "./ResultModal";
 
 
 export default function Tests({ tests }: { tests: TestsInterface }) {
   const answerID = tests.quiz.quiztakers_set.usersanswer_set
   const [findTest, setFindTest] = useState<number>(0)
   const [allAnswer, setAllAnswer] = useState<AnswerInterface[]>(answerID)
+  const [resultData, setResultData] = useState<null | ResultDataInterface>(null)
   const [boxWidth, setBoxWidth] = useState<number>()
   const boxRef = useRef<HTMLAnchorElement>(null)
   const { width } = useWidth()
   const [alert, setAlert] = useState<AlertInterface[]>([])
   const complete = useVisiblity(tests.quiz.quiztakers_set.completed)
-  const router = useRouter()
   useEffect(() => {
     if (boxRef.current !== null) {
       const width: number = boxRef.current.getBoundingClientRect().width
@@ -38,10 +38,10 @@ export default function Tests({ tests }: { tests: TestsInterface }) {
     })
     if (request.status == 200) {
       complete.show()
-      router.push('/results')
+      // router.push('/results')
     }
     const resJson = await request.json();
-    console.log(resJson);
+    setResultData(resJson.data)
     setAlert([...alert, { success: resJson.success, message: resJson.message }])
   }
 
@@ -53,7 +53,7 @@ export default function Tests({ tests }: { tests: TestsInterface }) {
       {
         alert.length > 0 && <CustomAlert alerts={alert} />
       }
-
+      {resultData !== null ? <ResultModal resultData={resultData} /> : ''}
       <Grid2 container spacing={{ xs: 1, sm: 2 }} sx={{ mt: 2 }}>
         <Grid2 xs={12} md={8} lg={8}>
           <Typography variant="subtitle2" sx={{ mb: 2 }}>

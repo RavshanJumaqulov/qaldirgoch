@@ -3,6 +3,8 @@ import { Box, Container } from "@mui/material";
 import React from "react";
 import TopSubjects from "@/components/TopSubjects";
 import TopUsers from "@/components/TopUsers";
+import axios from "axios";
+
 
 export default async function App() {
   

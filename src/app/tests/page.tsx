@@ -9,20 +9,22 @@ async function fetchSubjects() {
     method: 'get',
     url: '/fanlar',
   })
-  return subject.data
-  // if (subject?.status == 200) {
-  // }
-  // return { detail: "Ma'lumotlarni yuklashning imkoni bo'lmadi" }
+
+  if (subject?.status == 200) {
+    return subject.data
+  }
+  return { detail: "Ma'lumotlarni yuklashning imkoni bo'lmadi" }
 }
 async function fetchThemes() {
   const request = await api({
     method: 'get',
     url: '/quizzes',
   })
-  return request.data
-  // if (request?.status == 200) {
-  // }
-  // return { detail: "Ma'lumotlarni yuklashning imkoni bo'lmadi" }
+
+  if (request?.status == 200) {
+    return request.data
+  }
+  return { detail: "Ma'lumotlarni yuklashning imkoni bo'lmadi" }
 }
 export default async function Tests() {
   const subjects = await fetchSubjects()

@@ -15,7 +15,7 @@ const fetchTest = async (name: string) => {
     method: 'get',
     url: `/quizzes/${name}`
   });
-  if(request.data.quiz &&  request.data.quiz.quiztakers_set.completed){
+  if (request.data.quiz && request.data.quiz.quiztakers_set.completed) {
     redirect('/tests')
   }
   return request.data;

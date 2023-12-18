@@ -138,8 +138,48 @@ export interface MyResults {
   slug: string,
   questions_count: number,
   completed: boolean,
-  score: number |  null,
+  score: number | null,
   progress: null | number,
   date_finished: string | null,
   timestamp: string | null,
+}
+
+export interface ResultDataInterface {
+  id: number,
+  name: string,
+  description: string,
+  image: string,
+  slug: string,
+  roll_out: boolean,
+  timestamp: string,
+  fanlar: number,
+  quiztaker_set: {
+    id: number,
+    usersanswer_set:
+    {
+      id: number,
+      quiz_taker: number,
+      question: number,
+      answer: null | number
+    }[],
+    score: number,
+    completed: boolean,
+    date_finished: null,
+    timestamp: string,
+    user: number,
+    quiz: number
+  },
+  question_set:
+  {
+    id: number,
+    answer_set:
+    {
+      id: number,
+      question: number,
+      label: string
+    }[],
+    label: string,
+    order: number,
+    quiz: number
+  }[],
 }
