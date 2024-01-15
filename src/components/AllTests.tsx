@@ -4,6 +4,7 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useEffect, useState } from "react";
 import TestsItem from "./TestsItem";
 import { themeInterface, themesInterface } from "../../types/TypeInterfaces";
+import { complatedHeader, testHeader } from "@/app/data/ColsHeader";
 
 
 export default function AllTests({ themes }: { themes: themesInterface[] }) {
@@ -26,13 +27,8 @@ export default function AllTests({ themes }: { themes: themesInterface[] }) {
           return (
             <TestsItem
               key={el.id}
-              name={el.name}
-              slug={el.slug}
-              questions_count={el.questions_count}
-              fanlar={el.fanlar}
-              image={el.image}
-              description={el.description}
-              id={el.id}
+              item={el}
+              header={testHeader}
             />
           );
         })

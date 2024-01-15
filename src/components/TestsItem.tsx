@@ -2,12 +2,14 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import TestsItemLike from "./TestsItemLike";
 import Link from "next/link";
-import { themesInterface } from "../../types/TypeInterfaces";
+import { ColsHeaderInterface, themesInterface } from "../../types/TypeInterfaces";
+import { complatedHeader } from "@/app/data/ColsHeader";
 
 
-export default function TestsItem(props: themesInterface) {
+
+export default function TestsItem({ item, header }: { item: any, header: ColsHeaderInterface }) {
   return (
-    <Box sx={{ height: "100% !important", textDecoration: 'none' }} component={Link} href={`/test/${props.slug}`} >
+    <Box sx={{ height: "100% !important", textDecoration: 'none' }} component={header.link ? Link : 'div'} href={`/test/${header.link && header.link(item)}`} >
       <Box
         sx={{
           width: "100%",
@@ -58,9 +60,9 @@ export default function TestsItem(props: themesInterface) {
             },
           }}
         >
-          {props.name}
+          {header.title(item)}
         </Typography>
-        <Box sx={{width: '100%'}}>
+        <Box sx={{ width: '100%' }}>
           <Box
             sx={{
               width: "100%",
@@ -84,7 +86,7 @@ export default function TestsItem(props: themesInterface) {
                 transition: "0.3s all",
               }}
             >
-              {props.questions_count}
+              {header.questionCount(item)}
             </Typography>
             <Typography
               variant="body2"
@@ -102,7 +104,7 @@ export default function TestsItem(props: themesInterface) {
                 },
               }}
             >
-              12 300 marta ishlangan
+              {header.fanlar && header.fanlar(item)}
             </Typography>
           </Box>
           <Box
@@ -138,7 +140,7 @@ export default function TestsItem(props: themesInterface) {
                 },
               }}
             >
-              Matematika
+              {header.fanlar && header.fanlar(item)}
             </Typography>
             <TestsItemLike />
           </Box>

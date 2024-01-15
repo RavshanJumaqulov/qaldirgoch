@@ -61,7 +61,9 @@ export default function TestItem({
       if (idAttribute !== null) {
         const idValue = parseInt(idAttribute, 10);
         if (!isNaN(idValue) && idValue === findTest) {
-          window.scrollBy({
+          console.log(findTest);
+          
+          window.scrollTo({
             top: testItemRef.current.getBoundingClientRect().top - 80,
             left: 0,
             behavior: "smooth"

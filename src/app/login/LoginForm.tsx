@@ -39,15 +39,15 @@ export default function LoginForm() {
       setLoading(false);
       return res;
     } else if (sendSMS.visiblity) {
-      const res = await fetch('/api/login/', {
+      const request = await fetch('/api/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ data }),
       })
-      const resJson = await res.json();
-      console.log(resJson);
+      console.log(request);
+      const resJson = await request.json();
       if(resJson.access_token){
         router.push('/app',{scroll: false})
       }

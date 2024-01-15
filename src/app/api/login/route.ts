@@ -12,6 +12,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
             code: body.data.code
         })
     });
+    console.log(response);
     const resJson = await response.json();
     if (!!resJson.access_token) {
         cookies().set('accessToken', resJson.access_token, {

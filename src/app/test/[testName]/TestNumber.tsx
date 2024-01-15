@@ -5,7 +5,7 @@ import { AnswerInterface } from '../../../../types/TypeInterfaces'
 export default function TestNumber({ setFindTest, el, index }: { setFindTest: React.Dispatch<React.SetStateAction<number>>, el: AnswerInterface, index: number }) {
     return (
         <Box
-            onClick={() => setFindTest(el.question)}
+            onClick={() => {setFindTest(el.question)}}
             sx={{
                 width: 40,
                 height: 40,

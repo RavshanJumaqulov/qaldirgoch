@@ -1,6 +1,9 @@
 export interface themesInterface {
   id: number,
-  fanlar: number,
+  fanlar: {
+    id: number,
+    name: string
+  },
   name: string,
   description: string
   image: string
@@ -182,4 +185,38 @@ export interface ResultDataInterface {
     order: number,
     quiz: number
   }[],
+}
+
+export interface UserInterface {
+  username: string,
+  types: string,
+  first_name: string,
+  last_name: string,
+  image: null | string,
+  viloyat: string,
+  jinsi: string,
+  count: number,
+  score: number
+}
+
+export interface CompletedTest {
+  id: number,
+  name: string,
+  description: string,
+  image: string | null,
+  slug: string,
+  questions_count: number,
+  completed: boolean,
+  score: null | number,
+  progress: number,
+  date_finished: null | string,
+  timestamp: null | string
+}
+
+export interface ColsHeaderInterface {
+  link?: (item: any) => number | string,
+  title: (item: any) => string,
+  questionCount: (item: any) => number,
+  score?: (item: any) => number | null,
+  fanlar?: (item: any) => string
 }

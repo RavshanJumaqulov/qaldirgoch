@@ -35,7 +35,7 @@ const theme = (mode: PaletteMode) => createTheme({
       fontSize: 20,
       fontWeight: 500,
       color: '#fff',
-      cursor: 'pointer',
+      cursor: 'default',
     },
     body1: {
       fontSize: 24,

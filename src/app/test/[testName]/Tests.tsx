@@ -26,7 +26,7 @@ export default function Tests({ tests }: { tests: TestsInterface }) {
       const width: number = boxRef.current.getBoundingClientRect().width
       setBoxWidth(width)
     }
-  }, [width])
+  }, [width])  
 
   const completed = async () => {
     const request = await fetch('http://localhost:3000/api/complete/', {
@@ -79,7 +79,7 @@ export default function Tests({ tests }: { tests: TestsInterface }) {
         </Grid2>
         <Grid2 xs={12} md={4} lg={4} sx={{ overflowX: 'hidden', mb: {xs: 5, md: 0} }}>
           <Box ref={boxRef} sx={{ position: 'relative !important', maxWidth: '100%', top: 0 }}>
-            <Box sx={{ position: { xs: 'relative', md: 'fixed' }, width: boxWidth }} >
+            <Box sx={{ position: { xs: 'relative', md: 'fixed' }, width: boxWidth, zIndex: 200 }} >
               <Typography variant="subtitle2" sx={{ mb: 2 }}>
                 Boshqaruv
               </Typography>
