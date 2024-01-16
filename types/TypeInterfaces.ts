@@ -220,3 +220,11 @@ export interface ColsHeaderInterface {
   score?: (item: any) => number | null,
   fanlar?: (item: any) => string
 }
+
+export interface UpdateProfileInterface {
+  first_name: string,
+  last_name: string,
+  image: string | null,
+  jinsi: string,
+  viloyat: string
+}

@@ -1,4 +1,6 @@
 "use client";
+import CustomSelect from "@/components/commond/CustomSelect";
+import CustomTextField from "@/components/commond/CustomTextField";
 import {
   Box,
   FormControl,
@@ -6,234 +8,164 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  Stack,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { UpdateProfileInterface, UserInterface } from "../../../types/TypeInterfaces";
+import CustomButton from "@/components/commond/CustomButton";
+import { api } from "../api/lib/api";
 
-export interface Inputs {
-  first_name: string;
-  last_name: string;
-  region: string;
-  image: string | null;
-  poll: string;
+export interface SettingsForm {
+  user: UserInterface | undefined
 }
 
-const first_name = { name: "first_name" };
-const last_name = { name: "last_name" };
-const region = { name: "first_name" };
-const image = { name: "image" };
+const pols: { id: number, label: string }[] = [
+  {
+    id: 1,
+    label: 'Erkak'
+  },
+  {
+    id: 2,
+    label: 'Ayol'
+  }
+]
 
-export default function Forms(props: Inputs) {
+const regions: { id: number, label: string }[] = [
+  {
+    id: 1,
+    label: 'Toshkent shahri'
+  },
+  {
+    id: 2,
+    label: 'Andijon',
+  },
+  {
+    id: 3,
+    label: 'Buxoro'
+  },
+  {
+    id: 4,
+    label: 'Farg\'ona'
+  },
+  {
+    id: 5,
+    label: 'Jizzax'
+  },
+  {
+    id: 6,
+    label: 'Namangan'
+  },
+  {
+    id: 7,
+    label: 'Navoiy'
+  },
+  {
+    id: 8,
+    label: 'Qashqadaryo'
+  },
+  {
+    id: 9,
+    label: 'Qoraqalpag\'iston'
+  },
+  {
+    id: 10,
+    label: 'Samarqand'
+  },
+  {
+    id: 11,
+    label: 'Sirdaryo'
+  },
+  {
+    id: 12,
+    label: 'Surxandaryo'
+  },
+  {
+    id: 13,
+    label: 'Toshkent viloyati'
+  },
+  {
+    id: 14,
+    label: 'Xorazm'
+  }
+]
+
+
+
+export default function Forms(props: SettingsForm) {
   const {
-    register,
+    control,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<UpdateProfileInterface>({
+    defaultValues: {
+      first_name: props.user?.first_name,
+      last_name: props.user?.last_name,
+      jinsi: props.user?.jinsi,
+      viloyat: props.user?.viloyat
+    }
+  });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<UpdateProfileInterface> = async (data) => {
+    const request = await fetch('/api/updateProfile/', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    console.log(request);
 
-  const [regionState, setRegionState] = React.useState<string>("");
-  const [pollState, setPollState] = React.useState<string>("")
-
-  const handleRegion = (event: SelectChangeEvent) => {
-    setRegionState(event.target.value as string);
   };
-  const handlePoll = (event: SelectChangeEvent) => {
-    setPollState(event.target.value as string);
-  };
 
-  useEffect(() => {
-    setRegionState(props.region);
-    setPollState(props.poll)
-  }, []);
   return (
     <Box
       component={"form"}
+      sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
       onSubmit={handleSubmit(onSubmit)}
-      sx={{
-        "& input": {
-          mt: 2,
-          py: 2,
-          px: 1,
-          width: "100%",
-          background: "none",
-          border: "1px solid #FF5C00",
-          borderRadius: 3,
-          color: "#fff !important",
-          outline: "none",
-          transition: "0.3s all",
-          fontSize: 16,
-          fontWeight: 600,
-          "&:hover": {
-            borderColor: "#FF5C00",
-            color: "#FF5C00",
-          },
-          "&:focus": {
-            outline: "none",
-            boxShadow: "0px 0px 5px #FF5C00",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "#FF5C00",
-          },
-          "&:autofill": {
-            background: "none !important",
-            color: "#FF5C00",
-          },
-          "&:-webkit-autofill": {
-            "&:hover": {
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "#FF5C00",
-              transition: "all 5000s ease-in-out 0s",
-            },
-            "&:focus": {
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "#FF5C00",
-              WebkitBoxShadow: "0px 0px 5px #FF5C00",
-              boxShadow: "0px 0px 5px #FF5C00",
-              transition: "all 5000s ease-in-out 0s",
-            },
-            "&:active": {
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "#FF5C00",
-              transition: "all 5000s ease-in-out 0s",
-            },
-            background: "none !important",
-          },
-          "&:-internal-autofill-selected": {
-            background: "none !important",
-            backgroundColor: "none",
-          },
-        },
-
-        "& .MuiInputBase-root": {
-          borderRadius: 3,
-          fontSize: 16,
-          fontWeight: 600,
-          "& fieldset": {
-            border: "1px solid #FF5C00",
-          },
-          "&:hover": {
-            "& fieldset": {
-              borderColor: "#FF5C00 !important",
-            },
-          },
-          "& .MuiSelect-select": {
-            py: 2,
-            px: 1,
-            textAlign: "left",
-          },
-
-          "& .MuiSelect-root": {
-            "&:hover": {
-              "& fieldset": {
-                borderColor: "#FF5C00 !important",
-              },
-            },
-          },
-          "&.Mui-focused": {
-            color: "#FF5C00",
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderWidth: 2,
-              borderColor: "#FF5C00 !important",
-              boxShadow: "0px 0px 5px #FF5C00",
-            },
-          },
-        },
-      }}
     >
       <Grid2 container spacing={{ xs: 1, sm: 2, md: 1, lg: 2 }}>
         <Grid2 xs={12} sm={6}>
-          <input
-            type="text"
-            {...first_name}
-            defaultValue={props.first_name}
-            placeholder="Ismingizni kiriting"
-            {...register("first_name")}
+          <CustomTextField
+            control={control}
+            name="first_name"
+            required={true}
+            minLength={3}
+            label="Ism" />
+        </Grid2>
+        <Grid2 xs={12} sm={6}>
+          <CustomTextField
+            control={control}
+            name="last_name"
+            required={true}
+            minLength={3}
+            label="Familiya" />
+        </Grid2>
+        <Grid2 xs={12} sm={6}>
+          <CustomSelect
+            label="Viloyati"
+            name="viloyat"
+            control={control}
+            options={regions}
+            required={true}
           />
         </Grid2>
         <Grid2 xs={12} sm={6}>
-          <input
-            type="text"
-            {...region}
-            defaultValue={props.last_name}
-            placeholder="Viloyatingizni kiriting"
-            {...register("region")}
+          <CustomSelect
+            label="Jinsi"
+            name="jinsi"
+            control={control}
+            options={pols}
+            required={true}
           />
-        </Grid2>
-        <Grid2 xs={12} sm={6}>
-          <FormControl fullWidth>
-            <InputLabel
-              id="demo-simple-select-label"
-              sx={{ fontSize: 16, fontWeight: "600" }}
-            >
-              Viloyat
-            </InputLabel>
-            <Select value={regionState} label="Viloyat" onChange={handleRegion}>
-              <MenuItem value={"Andijon"} sx={{ fontSize: 16 }}>
-                Andijon
-              </MenuItem>
-              <MenuItem value={"Buxoro"} sx={{ fontSize: 16 }}>
-                Buxoro
-              </MenuItem>
-              <MenuItem value={"Farg'ona"} sx={{ fontSize: 16 }}>
-                Farg`ona
-              </MenuItem>
-              <MenuItem value={"Jizzax"} sx={{ fontSize: 16 }}>
-                Jizzax
-              </MenuItem>
-              <MenuItem value={"Namangan"} sx={{ fontSize: 16 }}>
-                Namangan
-              </MenuItem>
-              <MenuItem value={"Navoiy"} sx={{ fontSize: 16 }}>
-                Navoiy
-              </MenuItem>
-              <MenuItem value={"Qashqadaryo"} sx={{ fontSize: 16 }}>
-                Qashqadaryo
-              </MenuItem>
-              <MenuItem value={"Samarqand"} sx={{ fontSize: 16 }}>
-                Samarqand
-              </MenuItem>
-              <MenuItem value={"Sirdaryo"} sx={{ fontSize: 16 }}>
-                Sirdaryo
-              </MenuItem>
-              <MenuItem value={"Surxandaryo"} sx={{ fontSize: 16 }}>
-                Surxandaryo
-              </MenuItem>
-              <MenuItem value={"Toshkent"} sx={{ fontSize: 16 }}>
-                Toshkent
-              </MenuItem>
-              <MenuItem value={"Toshkent shahri"} sx={{ fontSize: 16 }}>
-                Toshkent shahri
-              </MenuItem>
-              <MenuItem value={"Xorazm"} sx={{ fontSize: 16 }}>
-                Xorazm
-              </MenuItem>
-              <MenuItem value={"Qoraqalpog'iston respublikasi"} sx={{ fontSize: 16 }}>
-                Qoraqalpog`iston respublikasi
-              </MenuItem>
-            </Select>
-          </FormControl>
-        </Grid2>
-        <Grid2 xs={12} sm={6}>
-          <FormControl fullWidth>
-            <InputLabel
-              id="demo-simple-select-label"
-              sx={{ fontSize: 16, fontWeight: "600" }}
-            >
-              Jinsi
-            </InputLabel>
-            <Select value={pollState} label="Jinsi" onChange={handlePoll}>
-              <MenuItem value={'Erkak'} sx={{ fontSize: 16 }}>
-                Erkak
-              </MenuItem>
-              <MenuItem value={'Ayol'} sx={{ fontSize: 16 }}>
-                Ayol
-              </MenuItem>
-            </Select>
-          </FormControl>
         </Grid2>
       </Grid2>
+      <Stack direction={'row'} justifyContent={'flex-end'} >
+        <CustomButton type='submit' title="Saqlash" sx={{}} />
+      </Stack>
     </Box>
   );
 }

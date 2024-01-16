@@ -16,7 +16,23 @@ const theme = (mode: PaletteMode) => createTheme({
     },
     secondary: {
       main: 'hsla(0,0%,100%,.6)'
+    },
+    active: {
+      main: '#FF5C00'
     }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      mobile: 0,
+      tablet: 640,
+      laptop: 1200,
+      desktop: 1600,
+    },
   },
   typography: {
     fontFamily: openSans.style.fontFamily,
@@ -55,16 +71,6 @@ const theme = (mode: PaletteMode) => createTheme({
     button: {
       fontFamily: openSans.style.fontFamily,
       textTransform: 'full-size-kana',
-      fontSize: 20,
-      fontWeight: 600,
-      lineHeight: 1.25,
-      letterSpacing: '-0.01em',
-      p: '1rem 1.5rem',
-      background: '#FF5C00',
-      color: '#000',
-      '&:hover': {
-        background: '#fff'
-      }
     }
   },
   components: {
@@ -79,5 +85,33 @@ const theme = (mode: PaletteMode) => createTheme({
     },
   },
 });
+
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    mobile: true;
+    tablet: true;
+    laptop: true;
+    desktop: true;
+  }
+  interface Palette {
+    active: Palette["primary"];
+  }
+  interface PaletteOptions {
+    active?: PaletteOptions["primary"];
+  }
+  interface PaletteColor {
+    lighter?: string;
+    darker?: string;
+  }
+  interface SimplePaletteColorOptions {
+    lighter?: string;
+    darker?: string;
+  }
+}
 
 export default theme;

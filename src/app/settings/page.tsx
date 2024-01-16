@@ -2,8 +2,23 @@ import { Avatar, Box, Container, Typography } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React from "react";
 import Forms from "./Forms";
+import { api } from "../api/lib/api";
+import { UserInterface } from "../../../types/TypeInterfaces";
 
-export default function Settings() {
+const getUser = async () => {
+  const request = await api<UserInterface>({
+    method: 'get',
+    url: '/user'
+  })
+  if (request?.status == 200) {
+    return request.data
+  }
+}
+
+export default async function Settings() {
+  const user = await getUser()
+  console.log(user);
+
   return (
     <Box sx={{ width: "100%", mt: 10 }}>
       <Container maxWidth="xl" sx={{ ml: 0 }}>
@@ -15,7 +30,7 @@ export default function Settings() {
             background: "hsla(0,0%,100%,.05)",
             py: 5,
             mt: { xs: 2, md: 4 },
-            px: {xs: 1, md: 2}
+            px: { xs: 1, md: 2 }
           }}
         >
           <Grid2 xs={12} md={6}>
@@ -25,7 +40,7 @@ export default function Settings() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                
+
               }}
             >
               <Avatar
@@ -46,15 +61,18 @@ export default function Settings() {
                 }}
               />
               <Typography variant="body1" sx={{ color: "#fff" }}>
-                Ravshan Jumaqulov
+                {(user?.first_name == '' && user?.last_name) == '' ?
+                  'Foydalanuvchi' :
+                  user?.first_name == '' ?
+                    user?.last_name : user?.first_name}
               </Typography>
-              <Typography variant="body2" sx={{ color: "#fff" }}>
-                Student
+              <Typography variant="body2" sx={{ color: "#fff", textTransform: 'lowercase' }}>
+                {user?.types}
               </Typography>
             </Box>
           </Grid2>
           <Grid2 xs={12} md={6}>
-            <Forms first_name='Ravshan' last_name='Jumaqulov' region='Navoiy' poll='erkak' image='/smile4.png' />
+            <Forms user={user} />
           </Grid2>
         </Grid2>
       </Container>
