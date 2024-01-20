@@ -1,4 +1,4 @@
-import { Button, SxProps, Theme } from '@mui/material'
+import { Button, ButtonPropsSizeOverrides, SxProps, Theme } from '@mui/material'
 import React from 'react'
 
 export default function CustomButton({
@@ -6,19 +6,31 @@ export default function CustomButton({
     title,
     disabled = false,
     disableElevation = false,
-    type = 'button'
+    type = 'button',
+    size = "medium",
+    onClick,
+    component = 'button',
+    href
 }: {
     sx?: SxProps<Theme> | undefined,
     title: string,
     disabled?: boolean,
     disableElevation?: boolean,
-    type?: 'button' | 'submit' | 'reset' | undefined
+    type?: 'button' | 'submit' | 'reset' | undefined,
+    size?: "medium" | "small" | "large"
+    onClick?: () => any,
+    component?: any,
+    href?: string
 }) {
     return (
         <Button
             disabled={disabled}
             disableElevation
             type={type}
+            size={size}
+            onClick={onClick}
+            component={component}
+            href={href}
             sx={{
                 background: theme => theme.palette.active.main,
                 borderRadius: 3,

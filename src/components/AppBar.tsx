@@ -20,11 +20,12 @@ export default function AppBar() {
   const tooggleIcon = useVisiblity();
   const currntPage = usePathname();
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", }}>
       <Box
         onClick={() => tooggleIcon.show()}
         sx={{
           width: "100%",
+          maxWidth: '100vw',
           display: {
             xs: tooggleIcon.visiblity ? "block" : "none",
             sm: "none",
@@ -42,6 +43,7 @@ export default function AppBar() {
           backdropFilter: "blur(20px)",
           position: "fixed",
           width: "100%",
+          maxWidth: '100vw',
           top: 0,
           mt: 0,
           zIndex: 999,

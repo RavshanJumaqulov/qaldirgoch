@@ -28,6 +28,7 @@ export default function TestItem({
   const testItemRef = useRef<HTMLElement | null>(null)
   const [answer, setAnswer] = useState<null | number>(null)
   const [loading, setLoading] = useState<number>(0)
+  console.log(findTest);
   const changeAnswer = async (id: number) => {
     setLoading(id)
     const res = await fetch('/api/saveAnswer/', {
@@ -58,17 +59,16 @@ export default function TestItem({
   useEffect(() => {
     if (testItemRef.current !== null) {
       const idAttribute = testItemRef.current.getAttribute('id');
+
       if (idAttribute !== null) {
         const idValue = parseInt(idAttribute, 10);
         if (!isNaN(idValue) && idValue === findTest) {
-          console.log(findTest);
-          
-          window.scrollTo({
+          console.log(testItemRef.current.getBoundingClientRect().top - 80);
+          window.scrollBy({
             top: testItemRef.current.getBoundingClientRect().top - 80,
             left: 0,
             behavior: "smooth"
           })
-          testItemRef.current.scrollTo({})
         }
       }
     }
@@ -79,12 +79,12 @@ export default function TestItem({
       id={`${id}`}
       ref={testItemRef}
       sx={{
-        width: "100%",
+        width: "calc(100% - 100px)",
         p: 2,
         backgroundColor: "hsla(0,0%,100%,.05)",
         borderRadius: "25px",
         mb: 2,
-        userSelect: 'none'
+        userSelect: 'none',
       }}
     >
       <Typography variant="body2" sx={{ textAlign: "left" }}>

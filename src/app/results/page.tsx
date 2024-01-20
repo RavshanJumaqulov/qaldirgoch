@@ -4,16 +4,22 @@ import { HeadsInterface, MyResults } from '../../../types/TypeInterfaces'
 import { api } from '../api/lib/api';
 import ResultItem from './ResultItem';
 
+interface fetchResultsInterface {
+  results?: MyResults[]
+  count?: number,
+  next?: null | string,
+  previous?: null | string,
+  detail?: string
+}
+
 async function fetchResults() {
-  const request = await api({
+  const request = await api<fetchResultsInterface>({
     method: 'get',
     url: `/my-quizzes/`
   });
   if (request?.status == 200) {
     return request.data;
   }
-
-  return []
 }
 
 export default async function page() {
@@ -26,7 +32,7 @@ export default async function page() {
     { name: "Yakunlash vaqti", width: 150, key: 'score' },
     { name: "Yo'naltirish", width: 150, key: 'score' },
   ];
-  const results: MyResults[] = await fetchResults()
+  const results = await fetchResults()
 
   return (
     <Container maxWidth="xl" sx={{ ml: 0, }}>
@@ -57,7 +63,7 @@ export default async function page() {
             })
           }
         </Box>
-        {results.map((el: MyResults, index: number) => {
+        {results && results.results?.map((el: MyResults, index: number) => {
           return (
             <ResultItem key={el.id} index={index} heads={heads} result={el} />
           )

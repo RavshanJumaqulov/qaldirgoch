@@ -15,11 +15,7 @@ export default function SubjectsSlider({
   params: string | undefined;
   subjects: Subject[]
 }) {
-  const uploadClient = useVisiblity()
-
-  useEffect(() => {
-    uploadClient.show()
-  }, [])
+  const uploadClient = useVisiblity(true)
 
   return (
     <Box

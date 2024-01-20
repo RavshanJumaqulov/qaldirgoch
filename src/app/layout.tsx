@@ -2,6 +2,7 @@ import * as React from "react";
 import ThemeRegistry from "@/components/ThemeRegistry/ThemeRegistry";
 import Box from "@mui/material/Box";
 import NextTopLoader from "nextjs-toploader";
+import ContextProvider from "@/context/Context";
 
 
 export default async function RootLayout({
@@ -32,13 +33,15 @@ export default async function RootLayout({
         }}>
           <Box sx={{
             width: "100%",
-            maxWidth: '100vw',
-            zIndex: 999999999,
+            maxWidth: '100%',
+            position: 'absolute',
           }}>
             <NextTopLoader />
           </Box>
           <ThemeRegistry>
-            <Box sx={{ minWidth: "100vw", maxWidth: '100vw', overflowX: 'hidden', }}>{children}</Box>
+            <ContextProvider>
+              <Box sx={{ minWidth: "100%", maxWidth: '100%', overflowX: 'hidden', }}>{children}</Box>
+            </ContextProvider>
           </ThemeRegistry>
         </Box>
       </body>

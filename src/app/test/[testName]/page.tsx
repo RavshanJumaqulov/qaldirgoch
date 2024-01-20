@@ -15,7 +15,7 @@ const fetchTest = async (name: string) => {
     method: 'get',
     url: `/quizzes/${name}`
   });
-  if (request.data.quiz && request.data.quiz.quiztakers_set.completed) {
+  if (request?.data?.quiz && request?.data?.quiz.quiztakers_set.completed) {
     redirect('/tests')
   }
   return request.data;
@@ -25,8 +25,14 @@ export default async function TestId({ params }: { params: paramsInterface }) {
   const tests: TestsInterface = await fetchTest(params.testName)
 
   return (
-    <Box sx={{ maxWidth: "100%", minHeight: "calc(100vh - 40px)", overflow: "hidden", width: '100%', }}>
-      <Box sx={{ width: "100%", mt: 10 }}>
+    <Box
+      sx={{
+        width: '100%',
+        maxWidth: "100%",
+        minHeight: "calc(100vh - 40px)",
+        overflow: "hidden",
+      }}>
+      <Box sx={{ width: "100%", mt: 10, }}>
         {
           tests.detail ? <TestError error={tests.detail} /> : <Tests tests={tests} />
         }

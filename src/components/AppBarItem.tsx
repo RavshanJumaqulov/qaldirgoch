@@ -18,11 +18,7 @@ export default function AppBarItem({
 }) {
   const router = useRouter();
   const currntPage = usePathname();
-  const load = useVisiblity();
-
-  useEffect(() => {
-    load.show();
-  }, []);
+  const load = useVisiblity(true);
 
   return (
     <Stack

@@ -4,6 +4,7 @@ import React from "react";
 import Forms from "./Forms";
 import { api } from "../api/lib/api";
 import { UserInterface } from "../../../types/TypeInterfaces";
+import CustomAvatarInput from "@/components/commond/CustomAvatarInput";
 
 const getUser = async () => {
   const request = await api<UserInterface>({
@@ -43,6 +44,7 @@ export default async function Settings() {
 
               }}
             >
+              <CustomAvatarInput />
               <Avatar
                 alt="Ravshan Jumaqulov"
                 src="/smile4.png"

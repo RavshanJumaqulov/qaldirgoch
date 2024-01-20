@@ -11,11 +11,12 @@ import {
   Stack,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UpdateProfileInterface, UserInterface } from "../../../types/TypeInterfaces";
 import CustomButton from "@/components/commond/CustomButton";
 import { api } from "../api/lib/api";
+import { ContextType, MainContext } from "@/context/Context";
 
 export interface SettingsForm {
   user: UserInterface | undefined
@@ -109,18 +110,26 @@ export default function Forms(props: SettingsForm) {
     }
   });
 
+  const {
+    actions: { openSnackbar },
+  } = useContext<ContextType>(MainContext)
+
   const onSubmit: SubmitHandler<UpdateProfileInterface> = async (data) => {
     const request = await fetch('/api/updateProfile/', {
-      method: "POST",
+      method: "PUT",
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-    console.log(request);
-
+    const response = await request.json()
+    if (request.status == 200) {
+      openSnackbar({ message: `Profil tahrirlandi!`, status: 'success' })
+    }
+    else {
+      openSnackbar({ message: `${response.detail} ${request.status}`, status: 'error' })
+    }
   };
-
   return (
     <Box
       component={"form"}

@@ -1,27 +1,24 @@
+'use client'
 import { Box, Button, Typography } from '@mui/material'
 import React, { useCallback, useEffect, useState } from 'react'
 import ResultModalItem from './ResultModalItem'
 import { ResultDataInterface } from '../../../../types/TypeInterfaces'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 
 export default function ResultModal({ resultData }: { resultData: ResultDataInterface }) {
     const [timer, setTimer] = useState(10)
     const router = useRouter()
 
-    useCallback(() => {
-    }, [resultData])
     useEffect(() => {
-        if (resultData !== null) {
-            const interval = setInterval(() => {
-                setTimer((prevCounter) => prevCounter - 1);
-            }, 1000);
+        const interval = setInterval(() => {
+            setTimer((prevCounter) => prevCounter - 1);
+        }, 1000);
 
-            if (timer <= 0) {
-                clearInterval(interval)
-                router.push('/tests', { scroll: false })
-            }
-            return () => clearInterval(interval);
+        if (timer <= 0) {
+            clearInterval(interval)
+            redirect('/tests')
         }
+        return () => clearInterval(interval);
     }, [timer])
     return (
         <Box sx={{

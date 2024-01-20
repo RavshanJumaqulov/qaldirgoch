@@ -3,11 +3,11 @@ import { Box } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useEffect, useState } from "react";
 import TestsItem from "./TestsItem";
-import { themeInterface, themesInterface } from "../../types/TypeInterfaces";
-import { complatedHeader, testHeader } from "@/app/data/ColsHeader";
+import { themesInterface } from "../../types/TypeInterfaces";
+import { testHeader } from "@/app/data/ColsHeader";
 
 
-export default function AllTests({ themes }: { themes: themesInterface[] }) {
+export default function AllTests({ themes }: { themes: themesInterface[] | undefined }) {
 
   return (
     <Box sx={{ width: "100%", }}>
@@ -23,7 +23,7 @@ export default function AllTests({ themes }: { themes: themesInterface[] }) {
           gap: { xs: 1, sm: 2 },
         }}
       >
-        {themes.map((el: themesInterface) => {
+        {themes?.map((el: themesInterface) => {
           return (
             <TestsItem
               key={el.id}

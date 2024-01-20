@@ -15,7 +15,9 @@ export default function layout({ children }: { children: React.ReactNode }) {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        minHeight: '100vh',
+        height: "auto",
+        overflowY: 'auto'
       }}
     >
       <AppBar />
@@ -42,7 +44,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
             position: "fixed",
             zIndex: -1,
           }}
-        ></Box>
+        />
         {children}
       </Stack>
     </Box>
