@@ -1,4 +1,5 @@
-import { Button, ButtonPropsSizeOverrides, SxProps, Theme } from '@mui/material'
+'use client'
+import { Button, SxProps, Theme } from '@mui/material'
 import React from 'react'
 
 export default function CustomButton({
@@ -45,6 +46,10 @@ export default function CustomButton({
                 letterSpacing: '-0.01em',
                 textTransform: 'full-size-kana',
                 color: disabled ? 'rgba(255, 255, 255, 0.5) !important' : theme => theme.palette.primary.main,
+                transitionProperty:
+                    "color,background-color,border-color,text-decoration-color,fill,stroke",
+                transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
+                transitionDuration: "0.15s",
                 '& svg': {
                     color: disabled ? 'rgba(255, 255, 255, 0.5) !important' : theme => theme.palette.primary.main,
                     fill: disabled ? 'rgba(255, 255, 255, 0.5) !important' : theme => theme.palette.primary.main,

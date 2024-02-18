@@ -24,6 +24,7 @@ export default function HomeNavbar() {
           boxShadow: "none",
           transition: "0.3s all",
           WebkitTransition: "0.3s all",
+          py: 1
         }}
       >
         <Container
@@ -98,14 +99,16 @@ export default function HomeNavbar() {
               href="/app"
               endIcon={<LinkIcon sx={{ fill: "#000" }} />}
               sx={{
+                py: 2,
+                px: 3,
+                // mx: { sm: "auto" },
                 borderRadius: 50,
+                color: "#fff",
+                backgroundColor: "hsla(0,0%,100%,.1)",
+                border: "2px solid transparent",
                 "&:hover": {
-                  background: "#fff",
-                  color: "#00000099",
-                  '& svg':{
-                    color: "#00000099 !important",
-                    fill: '#00000099 !important'
-                  }
+                  border: "2px solid hsla(0,0%,100%,.1) !important",
+                  backgroundColor: "hsla(0,0%,100%,.1)",
                 },
               }}
             />

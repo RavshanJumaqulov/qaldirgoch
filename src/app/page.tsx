@@ -4,12 +4,9 @@ import {
   Avatar,
   Button,
   Container,
-  Divider,
-  Stack,
   Typography,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import TestItem from "@/components/TestItem";
 import TestCategoryItem from "@/components/TestCategoryItem";
 import AppStatistic from "@/components/AppStatistic";
 import HomeNavbar from "@/components/HomeNavbar";
@@ -131,16 +128,23 @@ export default function HomePage() {
             </Typography>
           </Box>
           <CustomButton
-            title='Hozir boshlash'
             component={Link}
-            href="/login"
+            title="Hozir boshlash"
+            href="/app"
             endIcon={<LinkIcon sx={{ fill: "#000" }} />}
             sx={{
-              "&:hover": {
-                background: "#fff",
-                color: "#00000099",
-              },
               mt: 5,
+              py: 2,
+              px: 3,
+              mx: { sm: "auto" },
+              borderRadius: 50,
+              color: "#fff",
+              backgroundColor: "hsla(0,0%,100%,.1)",
+              border: "2px solid transparent",
+              "&:hover": {
+                border: "2px solid hsla(0,0%,100%,.1) !important",
+                backgroundColor: "hsla(0,0%,100%,.1)",
+              },
             }}
           />
           <Box sx={{ mt: 8 }}>
