@@ -8,11 +8,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import TestsItem from "@/components/TestsItem";
 import { complatedHeader } from "../data/ColsHeader";
 import CustomButton from "@/components/commond/CustomButton";
-import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function ProfileContent({ user, themes }: { user: UserInterface, themes: CompletedTest[] }) {
-    const router = useRouter()
     const { width } = useWidth()
     const boxRef = useRef<HTMLAnchorElement>(null)
     const [boxWidth, setBoxWidth] = useState<number>()
