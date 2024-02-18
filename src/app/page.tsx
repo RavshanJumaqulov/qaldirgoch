@@ -15,6 +15,7 @@ import AppStatistic from "@/components/AppStatistic";
 import HomeNavbar from "@/components/HomeNavbar";
 import { LinkIcon } from "./SvgIcons/Icons";
 import Link from "next/link";
+import CustomButton from "@/components/commond/CustomButton";
 
 export const metadata = {
   title: "Qizil qaldirg'och",
@@ -129,23 +130,19 @@ export default function HomePage() {
               imkoniyati yaratilgan.
             </Typography>
           </Box>
-          <Button
+          <CustomButton
+            title='Hozir boshlash'
             component={Link}
             href="/login"
             endIcon={<LinkIcon sx={{ fill: "#000" }} />}
             sx={{
-              borderRadius: 50,
-              color: "#000",
-              padding: "1rem 1.5rem",
-              my: 3,
               "&:hover": {
                 background: "#fff",
                 color: "#00000099",
               },
               mt: 5,
             }}
-          >Hozir boshlash
-          </Button>
+          />
           <Box sx={{ mt: 8 }}>
             <Box sx={{ mb: 2, pl: 4 }}>
               <Typography

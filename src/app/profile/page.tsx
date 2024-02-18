@@ -29,11 +29,10 @@ async function fetchComplateTests() {
 export default async function Profile() {
   const user: UserInterface = await fetchUser()
   const complateTests: CompletedTest[] = await fetchComplateTests()
-  console.log(complateTests);
 
   return (
     <Container maxWidth="xl" sx={{ ml: 0, position: 'relative' }}>
-      {/* <ProfileContent user={user} themes={complateTests} /> */}
+      <ProfileContent user={user} themes={complateTests} />
     </Container>
   );
 }
