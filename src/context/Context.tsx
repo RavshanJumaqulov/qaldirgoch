@@ -21,7 +21,6 @@ const useMain = () => {
     return {
         state: {
             snackbar,
-            confirm,
         },
         actions: {
             openSnackbar,
