@@ -13,7 +13,6 @@ const Auth = async (
       },
       data: { username: number },
     });
-    console.log(data.data);
 
     return data;
   } catch (error) {

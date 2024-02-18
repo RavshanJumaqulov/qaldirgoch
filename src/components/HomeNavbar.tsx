@@ -11,6 +11,7 @@ import useVisiblity from "@/hooks/useVisiblity";
 import { useRouter } from "next/navigation";
 import { LinkIcon } from "@/app/SvgIcons/Icons";
 import Link from "next/link";
+import CustomButton from "./commond/CustomButton";
 
 export default function HomeNavbar() {
   const menuIconVisiblity = useVisiblity();
@@ -91,23 +92,23 @@ export default function HomeNavbar() {
               <Typography variant="subtitle2">Rekordlar</Typography>
               <Typography variant="subtitle2">Izohlar</Typography>
             </Box>
-            <Button
+            <CustomButton
               component={Link}
+              title="Hozir boshlash"
               href="/app"
-                endIcon={<LinkIcon sx={{ fill: "#000" }} />}
+              endIcon={<LinkIcon sx={{ fill: "#000" }} />}
               sx={{
                 borderRadius: 50,
-                color: "#000",
-                padding: "1rem 1.5rem",
-                my: 3,
                 "&:hover": {
                   background: "#fff",
                   color: "#00000099",
+                  '& svg':{
+                    color: "#00000099 !important",
+                    fill: '#00000099 !important'
+                  }
                 },
               }}
-            >
-              Hozir boshlash
-            </Button>
+            />
           </Box>
         </Container>
       </Toolbar>

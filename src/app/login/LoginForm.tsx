@@ -1,4 +1,5 @@
 "use client";
+import { ContextType, MainContext } from "@/context/Context";
 import { Auth } from "../api/Auth";
 import useVisiblity from "@/hooks/useVisiblity";
 import { LoadingButton } from "@mui/lab";
@@ -6,7 +7,7 @@ import { Box, Typography } from "@mui/material";
 import { InputMask } from "@react-input/mask";
 import { AxiosResponse } from "axios";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type Inputs = {
@@ -20,12 +21,14 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
   const [loading, setLoading] = useState<boolean>(false);
   const sendSMS = useVisiblity();
   const router = useRouter();
+  const {
+    actions: { openSnackbar },
+  } = useContext<ContextType>(MainContext)
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     if (!sendSMS.visiblity) {
@@ -34,7 +37,8 @@ export default function LoginForm() {
         data.telefon.replaceAll(" ", "").slice(1)
       );
       sendSMS.show();
-      if (res?.status == 200) {
+      if (res?.status == 201) {
+        openSnackbar({ message: res?.data, status: 'success' })
       }
       setLoading(false);
       return res;
@@ -46,10 +50,10 @@ export default function LoginForm() {
         },
         body: JSON.stringify({ data }),
       })
-      console.log(request);
       const resJson = await request.json();
-      if(resJson.access_token){
-        router.push('/app',{scroll: false})
+      if (resJson.access_token) {
+        openSnackbar({ message: "Profilingizga kirdingiz!", status: 'success' })
+        router.push('/app', { scroll: false })
       }
       return resJson
     }

@@ -10,7 +10,8 @@ export default function CustomButton({
     size = "medium",
     onClick,
     component = 'button',
-    href
+    href,
+    endIcon
 }: {
     sx?: SxProps<Theme> | undefined,
     title: string,
@@ -20,7 +21,8 @@ export default function CustomButton({
     size?: "medium" | "small" | "large"
     onClick?: () => any,
     component?: any,
-    href?: string
+    href?: string,
+    endIcon?: React.ReactNode
 }) {
     return (
         <Button
@@ -31,17 +33,22 @@ export default function CustomButton({
             onClick={onClick}
             component={component}
             href={href}
+            endIcon={endIcon}
             sx={{
                 background: theme => theme.palette.active.main,
                 borderRadius: 3,
                 padding: "6px 12px",
                 fontWeight: 500,
                 fontFamily: 'Open-Sans, sans-serif',
-                fontSize: 20,
+                fontSize: 16,
                 lineHeight: 1.25,
                 letterSpacing: '-0.01em',
                 textTransform: 'full-size-kana',
                 color: disabled ? 'rgba(255, 255, 255, 0.5) !important' : theme => theme.palette.primary.main,
+                '& svg': {
+                    color: disabled ? 'rgba(255, 255, 255, 0.5) !important' : theme => theme.palette.primary.main,
+                    fill: disabled ? 'rgba(255, 255, 255, 0.5) !important' : theme => theme.palette.primary.main,
+                },
                 ...sx,
             }}>
             {title}

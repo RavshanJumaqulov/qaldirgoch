@@ -1,6 +1,6 @@
 "use client";
 import { Box, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
 import AppSlideItem from "./AppSlideItem";
 
