@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import ProfileContent from "./ProfileContent";
 import { api } from "../api/lib/api";
-import { CompletedTest, MyResults, UserInterface } from "../../../types/TypeInterfaces";
+import { CompletedTest, UserInterface } from "../../../types/TypeInterfaces";
 
 
 async function fetchUser() {
@@ -12,7 +12,6 @@ async function fetchUser() {
   if (request?.status == 200) {
     return request.data;
   }
-
   return []
 }
 
@@ -24,7 +23,6 @@ async function fetchComplateTests() {
   if (request?.status == 200) {
     return request.data;
   }
-
   return []
 }
 
