@@ -56,22 +56,22 @@ export default function TestItem({
     setAnswer(oldAnswer?.answer || null)
   }, [])
 
-  useEffect(() => {
-    if (testItemRef.current !== null) {
-      const idAttribute = testItemRef.current.getAttribute('id');
+  // useEffect(() => {
+  //   if (testItemRef.current !== null) {
+  //     const idAttribute = testItemRef.current.getAttribute('id');
 
-      if (idAttribute !== null) {
-        const idValue = parseInt(idAttribute, 10);
-        if (!isNaN(idValue) && idValue === findTest) {
-          window.scrollBy({
-            top: testItemRef.current.getBoundingClientRect().top - 80,
-            left: 0,
-            behavior: "smooth"
-          })
-        }
-      }
-    }
-  }, [findTest])
+  //     if (idAttribute !== null) {
+  //       const idValue = parseInt(idAttribute, 10);
+  //       if (!isNaN(idValue) && idValue === findTest) {
+  //         window.scrollBy({
+  //           top: testItemRef.current.getBoundingClientRect().top - 80,
+  //           left: 0,
+  //           behavior: "smooth"
+  //         })
+  //       }
+  //     }
+  //   }
+  // }, [findTest])
 
   return (
     <Box
