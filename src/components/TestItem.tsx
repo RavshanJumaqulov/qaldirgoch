@@ -62,13 +62,13 @@ export default function TestItem({
 
       if (idAttribute !== null) {
         const idValue = parseInt(idAttribute, 10);
-        // if (!isNaN(idValue) && idValue === findTest) {
-        //   window.scrollBy({
-        //     top: testItemRef.current.getBoundingClientRect().top - 80,
-        //     left: 0,
-        //     behavior: "smooth"
-        //   })
-        // }
+        if (!isNaN(idValue) && idValue === findTest) {
+          window.scrollBy({
+            top: testItemRef.current.getBoundingClientRect().top - 80,
+            left: 0,
+            behavior: "smooth"
+          })
+        }
       }
     }
   }, [findTest])
