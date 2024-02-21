@@ -13,7 +13,6 @@ export default function layout({ children }: { children: React.ReactNode }) {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
       }}
       >
       <AppBar />
@@ -25,7 +24,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
           px: { xs: 1, sm: 2 },
           py: { sx: 1, sm: 2 },
           textAlign: "left",
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <Box sx={{width: "100%",

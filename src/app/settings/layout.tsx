@@ -7,7 +7,6 @@ export default function layout({ children }: { children: React.ReactNode }) {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
       }}
     >
       <AppBar />

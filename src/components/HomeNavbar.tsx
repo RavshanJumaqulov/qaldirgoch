@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Container, IconButton } from "@mui/material";
+import { Container, IconButton } from "@mui/material";
 import useVisiblity from "@/hooks/useVisiblity";
 import { useRouter } from "next/navigation";
 import { LinkIcon } from "@/app/SvgIcons/Icons";

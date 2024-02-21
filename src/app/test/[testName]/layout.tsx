@@ -15,7 +15,6 @@ export default function layout({ children }: { children: React.ReactNode }) {
     <Box
       sx={{
         width: "100%",
-        minHeight: '100vh',
         height: "auto",
         overflowY: 'auto'
       }}

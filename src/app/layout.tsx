@@ -3,6 +3,7 @@ import ThemeRegistry from "@/components/ThemeRegistry/ThemeRegistry";
 import Box from "@mui/material/Box";
 import NextTopLoader from "nextjs-toploader";
 import ContextProvider from "@/context/Context";
+import './global.css'
 
 
 export default async function RootLayout({
