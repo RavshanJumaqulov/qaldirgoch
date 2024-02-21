@@ -3,7 +3,6 @@ import React from "react";
 import TestsItemLike from "./TestsItemLike";
 import Link from "next/link";
 import { ColsHeaderInterface, themesInterface } from "../../types/TypeInterfaces";
-import { complatedHeader } from "@/app/data/ColsHeader";
 
 
 

@@ -5,7 +5,6 @@ import { api } from "../api/lib/api";
 import TestsError from "./TestsError";
 import { Container, Pagination, Stack } from "@mui/material";
 import { themesInterface } from "../../../types/TypeInterfaces";
-import { usePathname } from "next/navigation";
 import CustomPagination from "@/components/commond/CustomPagination";
 
 interface fetchThemesInterface {

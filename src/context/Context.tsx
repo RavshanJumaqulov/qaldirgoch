@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Snackbar from "@/components/Snackbar";
 type snackbarT = {
     message: string
@@ -15,16 +15,21 @@ const useMain = () => {
         status: '',
     })
 
-    const [width, setWidth] = useState<number>(window.innerWidth);
+    const [width, setWidth] = useState<number>(0);
+    useEffect(() => {
+        setWidth(window.innerWidth)
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
 
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [])
     const openSnackbar = ({ message, status }: snackbarT) =>
         setSnackbar({ open: true, message, status })
     const closeSnackbar = () => setSnackbar({ open: false, message: '', status: '' })
-
-    window.addEventListener('resize', () => {
-        setWidth(window.innerWidth)
-    })
-
     return {
         state: {
             snackbar,
