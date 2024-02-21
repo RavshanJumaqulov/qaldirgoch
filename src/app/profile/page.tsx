@@ -32,7 +32,7 @@ export default async function Profile() {
 
   return (
     <Container maxWidth="xl" sx={{ ml: 0, position: 'relative' }}>
-      <ProfileContent user={user} themes={complateTests} />
+      {/* <ProfileContent user={user} themes={complateTests} /> */}
     </Container>
   );
 }
