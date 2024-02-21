@@ -15,12 +15,20 @@ const useMain = () => {
         status: '',
     })
 
+    const [width, setWidth] = useState<number>(window.innerWidth);
+
     const openSnackbar = ({ message, status }: snackbarT) =>
         setSnackbar({ open: true, message, status })
     const closeSnackbar = () => setSnackbar({ open: false, message: '', status: '' })
+
+    window.addEventListener('resize', () => {
+        setWidth(window.innerWidth)
+    })
+
     return {
         state: {
             snackbar,
+            width
         },
         actions: {
             openSnackbar,

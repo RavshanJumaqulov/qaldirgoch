@@ -1,17 +1,17 @@
 'use client'
 import { Box, Button, Stack, Typography } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import useWidth from "@/hooks/useWidth";
 import { CompletedTest, UserInterface } from "../../../types/TypeInterfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import TestsItem from "@/components/TestsItem";
 import { complatedHeader } from "../data/ColsHeader";
 import CustomButton from "@/components/commond/CustomButton";
 import Link from "next/link";
+import { ContextType, MainContext } from "@/context/Context";
 
 export default function ProfileContent({ user, themes }: { user: UserInterface, themes: CompletedTest[] }) {
-    const { width } = useWidth()
+    const { state } = useContext<ContextType>(MainContext)
     const boxRef = useRef<HTMLAnchorElement>(null)
     const [boxWidth, setBoxWidth] = useState<number>()
     const [page, setPage] = useState<string>('myTests')
@@ -20,7 +20,7 @@ export default function ProfileContent({ user, themes }: { user: UserInterface, 
             const width: number = boxRef.current.getBoundingClientRect().width
             setBoxWidth(width)
         }
-    }, [width])
+    }, [state.width])
 
     return (
         <Grid2 container spacing={{ xs: 1, sm: 2 }} sx={{ mt: 2, flexDirection: { xs: 'column-reverse', md: 'row' }, }}>
