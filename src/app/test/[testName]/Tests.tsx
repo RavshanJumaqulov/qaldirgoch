@@ -3,14 +3,12 @@ import TestItem from "@/components/TestItem";
 import { Box, Button, Container, Typography } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { AlertInterface, AnswerInterface, ResultDataInterface, TestItemInterface, TestsInterface } from "../../../../types/TypeInterfaces";
+import { AnswerInterface, ResultDataInterface, TestItemInterface, TestsInterface } from "../../../../types/TypeInterfaces";
 import TestNumber from "./TestNumber";
-import useWidth from "@/hooks/useWidth";
-import CustomAlert from "@/components/CustomAlert";
 import useVisiblity from "@/hooks/useVisiblity";
 import ResultModal from "./ResultModal";
 import CustomButton from "@/components/commond/CustomButton";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ErrorIcon } from "@/app/SvgIcons/Icons";
 import { ContextType, MainContext } from "@/context/Context";
 
@@ -23,9 +21,9 @@ export default function Tests({ tests }: { tests: TestsInterface }) {
   const [boxWidth, setBoxWidth] = useState<number>()
   const boxRef = useRef<HTMLAnchorElement>(null)
   const router = useRouter()
-  const { width } = useWidth()
   const {
     actions: { openSnackbar },
+    state: { width }
   } = useContext<ContextType>(MainContext)
   const complete = useVisiblity(tests.quiz.quiztakers_set.completed)
   useEffect(() => {
