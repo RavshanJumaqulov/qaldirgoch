@@ -14,43 +14,43 @@ import { LinkIcon } from "./SvgIcons/Icons";
 import Link from "next/link";
 import CustomButton from "@/components/commond/CustomButton";
 
-export const metadata = {
-  title: "Qizil qaldirg'och",
-  description: "Abiturientlar uchun test sinovlari",
-  generator: "Next.js",
-  applicationName: "Qizil qaldirg'och",
-  referrer: "origin-when-cross-origin",
-  keywords: ["Abiturient", "Testlar", "DTM", "dtm", "test sinovlari"],
-  authors: [
-    { name: "Ravshan Jumaqulov" },
-    { name: "Ravshan Jumaqulov", url: "https://t.me/ravshan_jumaqulov" },
-  ],
-  creator: "Ravshan Jumaqulov",
-  publisher: "Ravshan Jumaqulov",
-  url: "https://swallow.net",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  // openGraph: {
-  //   images: "/swallow.png",
-  // },
-  images: [
-    {
-      url: "/swallow.png",
-      width: 800,
-      height: 600,
+  export const metadata = {
+    title: "Qizil qaldirg'och",
+    description: "Abiturientlar uchun test sinovlari",
+    generator: "Next.js",
+    applicationName: "Qizil qaldirg'och",
+    referrer: "origin-when-cross-origin",
+    keywords: ["Abiturient", "Testlar", "DTM", "dtm", "test sinovlari"],
+    authors: [
+      { name: "Ravshan Jumaqulov" },
+      { name: "Ravshan Jumaqulov", url: "https://t.me/ravshan_jumaqulov" },
+    ],
+    creator: "Ravshan Jumaqulov",
+    publisher: "Ravshan Jumaqulov",
+    url: "https://swallow.net",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
     },
-    {
-      url: "/swallow.png",
-      width: 1800,
-      height: 1600,
-      alt: "My custom alt",
-    },
-  ],
-  type: "website",
-};
+    // openGraph: {
+    //   images: "/swallow.png",
+    // },
+    images: [
+      {
+        url: "/swallow.png",
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "/swallow.png",
+        width: 1800,
+        height: 1600,
+        alt: "My custom alt",
+      },
+    ],
+    type: "website",
+  };
 
 interface TestsInterface {
   id: number;

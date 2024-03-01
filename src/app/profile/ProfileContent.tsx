@@ -10,7 +10,14 @@ import CustomButton from "@/components/commond/CustomButton";
 import Link from "next/link";
 import { ContextType, MainContext } from "@/context/Context";
 
-export default function ProfileContent({ user, themes }: { user: UserInterface, themes: CompletedTest[] }) {
+interface ComplatedTests {
+    count: number
+    next: null | string
+    previous: null | string
+    results: CompletedTest[]
+}
+
+export default function ProfileContent({ user, themes }: { user: UserInterface, themes: ComplatedTests }) {
     const { state } = useContext<ContextType>(MainContext)
     const boxRef = useRef<HTMLAnchorElement>(null)
     const [boxWidth, setBoxWidth] = useState<number>()
@@ -94,7 +101,7 @@ export default function ProfileContent({ user, themes }: { user: UserInterface, 
                             gap: { xs: 1, sm: 2 },
                         }}
                     >
-                        {themes.map((el: CompletedTest, index) => {
+                        {themes.results.map((el: CompletedTest, index) => {
                             return (
                                 <TestsItem
                                     key={index}

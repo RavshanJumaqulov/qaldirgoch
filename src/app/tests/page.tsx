@@ -40,7 +40,6 @@ async function fetchThemes() {
 export default async function Tests() {
   const subjects = await fetchSubjects()
   const themes = await fetchThemes()
-  console.log(themes);
 
   return (
     <Container maxWidth="xl" sx={{ ml: 0 }}>

@@ -3,6 +3,12 @@ import ProfileContent from "./ProfileContent";
 import { api } from "../api/lib/api";
 import { CompletedTest, UserInterface } from "../../../types/TypeInterfaces";
 
+interface ComplatedTests {
+  count: number
+  next: null | string
+  previous: null | string
+  results: CompletedTest[]
+}
 
 async function fetchUser() {
   const request = await api({
@@ -28,11 +34,15 @@ async function fetchComplateTests() {
 
 export default async function Profile() {
   const user: UserInterface = await fetchUser()
-  const complateTests: CompletedTest[] = await fetchComplateTests()
+  const complateTests: ComplatedTests = await fetchComplateTests()
+
 
   return (
     <Container maxWidth="xl" sx={{ ml: 0, position: 'relative' }}>
-      <ProfileContent user={user} themes={complateTests} />
+      {
+        (user !== undefined && complateTests !== undefined) &&
+        <ProfileContent user={user} themes={complateTests} />
+      }
     </Container>
   );
 }

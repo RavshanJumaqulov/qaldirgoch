@@ -54,7 +54,7 @@ export default function Tests({ tests }: { tests: TestsInterface }) {
   const currentDate = new Date()
   const timeDifference = currentDate.getTime() - startDate.getTime();
 
-  if (timeDifference > 1 * 60 * 1000) {
+  if (timeDifference > 10 * 60 * 1000) {
     completed()
     return (
       <Container

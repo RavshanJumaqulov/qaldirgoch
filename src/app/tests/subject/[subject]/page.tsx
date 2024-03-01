@@ -46,6 +46,8 @@ export default async function Subject({
 }) {
   const data = await fetchSubjects()
   const themes = await fetchThemes()  
+  console.log(themes);
+  
   return (
     <Box sx={{ maxWidth: "100vw", minHeight: "100vh", overflow: "hidden" }}>
       <Box sx={{ width: "100%" }}>
