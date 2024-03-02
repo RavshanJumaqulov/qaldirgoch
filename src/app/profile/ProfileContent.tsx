@@ -101,7 +101,7 @@ export default function ProfileContent({ user, themes }: { user: UserInterface, 
                             gap: { xs: 1, sm: 2 },
                         }}
                     >
-                        {themes.results.map((el: CompletedTest, index) => {
+                        {themes?.results?.map((el: CompletedTest, index) => {
                             return (
                                 <TestsItem
                                     key={index}
